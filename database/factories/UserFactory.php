@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -19,9 +20,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'role_id' => Role::all()->random()->id,
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt("12345"), // password
             'remember_token' => Str::random(10),
         ];
     }

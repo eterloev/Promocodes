@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use app\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +21,9 @@ class PromocodeFactory extends Factory
         return [
             'code' => fake() -> uuid(),
             'value' => fake() ->randomNumber(),
-            'creation_date' => now(),
-            'expiration_date' => now()->addDays(3)
+            'expiration_date' => now()->addDays(3),
+            'user_id' => User::all()->random()->id,
+            'product_id' => Product::all()->random()->id
         ];
     }
 }

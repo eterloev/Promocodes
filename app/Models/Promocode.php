@@ -12,7 +12,18 @@ class Promocode extends Model
     protected $fillable = [
         "code",
         "value",
-        "creation_date",
-        "expiration_date"
+        "expiration_date",
+        "product_id",
+        "user_id"
     ];
+
+    public function user()
+    {
+        $this->hasOne(User::class);
+    }
+
+    public function product()
+    {
+        $this->hasOne(Product::class);
+    }
 }

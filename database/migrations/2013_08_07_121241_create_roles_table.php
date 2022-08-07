@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promocodes', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string("code")->unique();
-            $table->integer("value");
+            $table->string("name")->unique();
             $table->timestamps();
-            $table->dateTime("expiration_date");
-            $table->foreignId("product_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId("user_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promocodes');
+        Schema::dropIfExists('roles');
     }
 };

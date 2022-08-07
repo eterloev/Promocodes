@@ -23,6 +23,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function role()
+    {
+        $this->hasOne(Role::class);
+    }
+
+    public function promocode()
+    {
+        $this->hasMany(Promocode::class)->orderBy("creation_date");
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
