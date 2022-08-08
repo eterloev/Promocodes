@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout.app')
 
-        <title>Laravel</title>
+@section('title', 'Главная страница')
 
-        <!-- Fonts -->
-        <link href="/css/app.css" rel="stylesheet">
-    </head>
-    <body class="antialiased">
-        <h1>Laravel </h1>
+@section('content')
+    @include('partials.header')
 
-        <script src="/js/app.js"></script>
-    </body>
-</html>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 mb-20">
+        @foreach($promocodes as $promocode)
+            <div class="px-4 py-8 max-w-x1">
+                <div class="px-4 py-2 mt-2 bg-white">
+                    <h2 class="font-bold text-2x1 text-gray-800">Promocode for {{ $promocode->product }}</h2>
+                    <p class="sm:text-sm text-xs text-gray-700 px-2 mr-1 my-3">
+                        for {{$promocode->value}}
+                    </p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+@endsection
