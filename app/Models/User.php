@@ -23,6 +23,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $attributes = array(
+        'role_id' => '1'
+    );
+
     public function role()
     {
         $this->hasOne(Role::class);
@@ -32,6 +36,7 @@ class User extends Authenticatable
     {
         $this->hasMany(Promocode::class)->orderBy("creation_date");
     }
+
     /**
      * The attributes that should be hidden for serialization.
      *
